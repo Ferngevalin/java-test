@@ -1,8 +1,8 @@
 {
   "items": [
-    { "name": "T-Shirt", "category": "clothing", "price": 350, "amount": 1 },
-    { "name": "Hat", "category": "accessories", "price": 250, "amount": 1 },
-    { "name": "Belt", "category": "accessories", "price": 230, "amount": 1 }
+    { "name": "T-Shirt", "category": "clothing", "price": 350, "quantity": 1 },
+    { "name": "Hat", "category": "accessories", "price": 250, "quantity": 1 },
+    { "name": "Belt", "category": "accessories", "price": 230, "quantity": 1 }
   ],
   "coupon": { "type": "Percentage", "percentage": 10 },
   "onTop": { "type": "Category", "category": "accessories", "amount": 15 },

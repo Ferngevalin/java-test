@@ -12,7 +12,7 @@ interface Item {
   name: string;
   category: "clothing" | "accessories" | "electronics";
   price: number;
-  quantity: number; 
+  quantity: number;
 }
 
 type CouponCampaign =
@@ -56,6 +56,8 @@ function couponDiscount(cart: Cart, total: number): number {
 
   if (coupon.type === campaignType.FIXED) {
     total -= coupon.amount;
+
+    //Assume that the coupon discount is subtracted from the original price
   } else if (coupon.type === campaignType.PERCENTAGE) {
     cart.items = items.map((item) => ({
       ...item,
@@ -72,6 +74,7 @@ function onTopDiscount(cart: Cart, total: number): number {
   const { onTop, items } = cart;
   if (!onTop) return total;
 
+  //Assume that the top discount is applied to the price after the coupon discount has been deducted.
   if (onTop.type === campaignType.CATEGORY) {
     const discount = items
       .filter((item) => item.category === onTop.category)

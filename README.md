@@ -15,14 +15,17 @@ Playtorium is a TypeScript-based project designed to handle JSON data for an ite
    cd Playtorium
 
 2. **Install dependencies**
+3. ```bash
    npm install
 
 ## Usage
 1. **Set the JSON filename in the fileName variable**
 2. **Run the project using the following command:**
+3. ```bash
    npm run dev
 
 ## Example JSON File
+```bash
 {
   "items": [
     { "name": "T-Shirt", "category": "clothing", "price": 350, "quantity": 1 },

@@ -12,7 +12,7 @@ interface Item {
   name: string;
   category: "clothing" | "accessories" | "electronics";
   price: number;
-  amount: number; //quantity of item
+  quantity: number; 
 }
 
 type CouponCampaign =
@@ -39,7 +39,7 @@ interface Cart {
 function applyDiscounts(filePath: string): number {
   var cart: Cart = importJson(filePath);
   let total = cart.items.reduce(
-    (acc, item) => acc + item.price * item.amount,
+    (acc, item) => acc + item.price * item.quantity,
     0
   );
 
@@ -76,7 +76,7 @@ function onTopDiscount(cart: Cart, total: number): number {
     const discount = items
       .filter((item) => item.category === onTop.category)
       .reduce(
-        (acc, item) => acc + item.price * item.amount * (onTop.amount / 100),
+        (acc, item) => acc + item.price * item.quantity * (onTop.amount / 100),
         0
       );
     total -= discount;
@@ -110,18 +110,6 @@ function importJson(filePath: string) {
     throw new Error(`Error parsing JSON file: ${err}`);
   }
 }
-
-// local test
-// const cart: Cart = {
-//   items: [
-//     { name: "T-Shirt", category: "clothing", price: 350, amount: 1 },
-//     { name: "Hat", category: "accessories", price: 250, amount: 1 },
-//     { name: "Belt", category: "accessories", price: 230, amount: 1 },
-//   ],
-//   coupon: { type: campaignType.PERCENTAGE, percentage: 10 },
-//   onTop: { type: campaignType.CATEGORY, category: "clothing", amount: 15 },
-//   season: { type: campaignType.SPECIAL, everyX: 300, discountY: 40 },
-// };
 
 console.log(
   `Total price after discounts: ${applyDiscounts("./data.json")} THB`
